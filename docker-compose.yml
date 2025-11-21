@@ -1,0 +1,23 @@
+services:
+
+    mikrotik-loki:
+        image: ghcr.io/gunny26/docker-mqtt-exporter:latest
+        container_name: mikrotik-loki
+        # restart: unless-stopped
+        environment:
+          - TZ=Europe/Vienna
+          - DEBUG_LEVEL=DEBUG
+          # inteval in seconds to fetch new logs
+          - INTERVAL=${INTERVAL}
+          # LOKI address
+          - LOKI_URL=${LOKI_URL}
+          # Label for the hostname
+          - TARGET_HOST=${TARGET_HOST}
+          # Label for the Job-Name
+          - TARGET_JOB=${TARGET_JOB}
+          # Mikrotik access informations
+          - MIKROTIK_IP=${MIKROTIK_IP}
+          - MIKROTIK_USERNAME=${MIKROTIK_USERNAME}
+          - MIKROTIK_PASSWORD=${MIKROTIK_PASSWORD}
+        mem_limit: 128m
+        cpu_count: 1
