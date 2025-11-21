@@ -1,7 +1,7 @@
 services:
 
     mikrotik-loki:
-        image: ghcr.io/gunny26/docker-mqtt-exporter:latest
+        image: ghcr.io/gunny26/docker-mikrotik-loki:latest
         container_name: mikrotik-loki
         # restart: unless-stopped
         environment:
