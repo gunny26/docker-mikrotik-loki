@@ -65,7 +65,6 @@ latest: ## Build and push latest image (development)
 		--platform $(PLATFORM_LATEST) \
 		--tag $(IMAGE_NAME) \
 		--tag $(IMAGE_NAME_LATEST) \
-		--push \
 		.
 
 stable: ## Build and push stable multi-platform image (production)
@@ -84,14 +83,7 @@ stable: ## Build and push stable multi-platform image (production)
 	else \
 		echo "No new commits to merge from latest"; \
 	fi
-	@echo "Building image tags: $(IMAGE_NAME) and $(IMAGE_NAME_STABLE)"
-	docker buildx build \
-		$(BUILDX_ARGS) \
-		--platform $(PLATFORM_LATEST),$(PLATFORM_STABLE) \
-		--tag $(IMAGE_NAME) \
-		--tag $(IMAGE_NAME_STABLE) \
-		--push \
-		.
+
 	@# Return to latest branch
 	git checkout latest
 
